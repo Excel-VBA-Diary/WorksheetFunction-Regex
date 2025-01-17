@@ -27,7 +27,7 @@ Option Explicit
 
 '------------------------------------------------------------------------------
 ' WorksheetFunction REGEXTEST for VBA
-' SYNTAX: REGEXTEST(text, pattern, [case_sensitivity])
+' SYNTAX: WSF_REGEXTEST(text, pattern, [case_sensitivity])
 '------------------------------------------------------------------------------
 Public Function WSF_REGEXTEST(ByVal Text As Variant, _
                               ByVal Pattern As String, _
@@ -46,7 +46,7 @@ End Function
 
 '------------------------------------------------------------------------------
 ' WorksheetFunction REGEXREPLACE for VBA
-' SYNTAX: REGEXREPLACE(text, pattern, replacement, [occurrence], [case_sensitivity])
+' SYNTAX: WSF_REGEXREPLACE(text, pattern, replacement, [occurrence], [case_sensitivity])
 '------------------------------------------------------------------------------
 Public Function WSF_REGEXREPLACE(ByVal Text As Variant, _
                                  ByVal Pattern As String, _
@@ -69,7 +69,7 @@ End Function
 
 '------------------------------------------------------------------------------
 ' WorksheetFunction REGEXEXTRACT for VBA
-' SYNTAX: REGEXEXTRACT(text, pattern, [return_mode], [case_sensitivity])
+' SYNTAX: WSF_REGEXEXTRACT(text, pattern, [return_mode], [case_sensitivity])
 '------------------------------------------------------------------------------
 Public Function WSF_REGEXEXTRACT(ByVal Text As Variant, _
                                  ByVal Pattern As String, _
