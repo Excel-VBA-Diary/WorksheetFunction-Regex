@@ -23,7 +23,8 @@ Option Explicit
 ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ' SOFTWARE.
 
-' Last update: January 17, 2025
+' Created: January 17, 2025
+' Last update: January 20, 2025
 
 '------------------------------------------------------------------------------
 ' WorksheetFunction REGEXTEST for VBA
@@ -35,8 +36,8 @@ Public Function WSF_REGEXTEST(ByVal Text As Variant, _
     Dim result As Variant
     Arg 1, Text
     Arg 2, Pattern
-    Arg 3, Case_Sensitivity
-    result = [REGEXTEST(Arg(1), Arg(2), Arg(3))]
+    result = Application.Evaluate("REGEXTEST(Arg(1),Arg(2)," & _
+                                   CStr(Case_Sensitivity) & ")")
     If VarType(result) = vbError Then
         WSF_REGEXTEST = ""
     Else
@@ -57,9 +58,9 @@ Public Function WSF_REGEXREPLACE(ByVal Text As Variant, _
     Arg 1, Text
     Arg 2, Pattern
     Arg 3, Replacement
-    Arg 4, Occurrence
-    Arg 5, Case_Sensitivity
-    result = [REGEXREPLACE(Arg(1), Arg(2), Arg(3), Arg(4), Arg(5))]
+    result = Application.Evaluate("REGEXREPLACE(Arg(1),Arg(2),Arg(3)," & _
+                                   CStr(Occurrence) & "," & _
+                                   CStr(Case_Sensitivity) & ")")
     If VarType(result) = vbError Then
         WSF_REGEXREPLACE = ""
     Else
@@ -78,9 +79,9 @@ Public Function WSF_REGEXEXTRACT(ByVal Text As Variant, _
     Dim result As Variant
     Arg 1, Text
     Arg 2, Pattern
-    Arg 3, Return_Mode
-    Arg 4, Case_Sensitivity
-    result = [REGEXEXTRACT(Arg(1), Arg(2), Arg(3), Arg(4))]
+    result = Application.Evaluate("REGEXEXTRACT(Arg(1), Arg(2)," & _
+                                   CStr(Return_Mode) & "," & _
+                                   CStr(Case_Sensitivity) & ")")
     If VarType(result) = vbError Then
         WSF_REGEXEXTRACT = ""
     Else
@@ -94,20 +95,20 @@ End Function
 '          省略した場合は記憶したすべてのデーターを消去する
 ' ArgData：指定した場合はデーターの書き込み、省略した場合はデーターの読み出し
 '------------------------------------------------------------------------------
-Private Function Arg(Optional ArgNo As Variant, Optional ArgData As Variant) As Variant
-    
+Public Function Arg(Optional ArgNo As Variant, Optional ArgData As Variant) As Variant
+
     Static temp(1 To 9) As Variant
-    
+
     If IsMissing(ArgNo) Then
         Erase temp
         Exit Function
     End If
-    
+
     If Not IsNumeric(ArgNo) Or ArgNo < 1 Or Arg > 9 Then
         Err.Raise Number:=2001, Description:="Arg: invalid argument"
         Exit Function
     End If
-    
+
     If IsMissing(ArgData) Then
         Arg = temp(ArgNo)               '引き数の読み出し
     Else
