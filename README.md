@@ -1,5 +1,5 @@
 # WorksheetFunction-Regex
-正規表現関数をWorksheetFunctionとして使う (Using Regular Expression Functions as WorksheetFunctions in VBA)  
+Excelの正規表現関数をWorksheetFunctionとして使う (Using Excel Regular Expression Functions as WorksheetFunctions in VBA)  
 初回投稿日：2025年1月17日  
 最終更新日：2025年1月20日  
 
