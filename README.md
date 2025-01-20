@@ -1,12 +1,12 @@
 # WorksheetFunction-Regex
 正規表現関数をWorksheetFunctionとして使う (Using Regular Expression Functions as WorksheetFunctions in VBA)  
 初回投稿日：2025年1月17日  
-最終更新日：2025年1月17日  
+最終更新日：2025年1月20日  
 
 ## 1. 概要
 Microsoft Excelの正規表現関数（REGEXTEST、REGEXREPLACE、REGEXEXTRACT）は、2024年5月にリリースされました。これらの関数は、Excelの365 Insiderプレビュー版で最初に導入されましたが、現在は一般公開されています。これらの正規表現関数は、Microsoft 365のサブスクリプションを持っているユーザーが利用できます。具体的には、Excel for Microsoft 365、Excel for the web、Excel for iOS、Excel for Androidなどのバージョンで利用可能です。   
 これらの関数は、比較的新しいPCRE2に準拠した正規表現の構文を記述できます。一方でVBAで参照する正規表現ライブラリー「Microsoft VBScript Regular Expressions 5.5」はECMA-262第3版に準拠しているため「後読み」ができないなどの制約があります。  
-VBAでワークシート関数を呼び出すとき、WorksheetFunctionオブジェクトを使いますが、残念ならがWorksheetFunctionオブジェクトのメソッドにこれらの正規表現関数はありません。   
+VBAでワークシート関数を呼び出すとき、WorksheetFunctionオブジェクトを使いますが、残念ならがこれらの正規表現関数はWorksheetFunctionオブジェクトのメソッドに出てきません。   
 ここではEvaluateメソッドを利用してワークシート関数を呼び出す方法を利用しています。パラメータの引き渡しには独自のユーザー定義関数（Arg）を用いています。これによって文字列だけでなく、配列を含むさまざまなデーター型を引き渡すことができ、汎用性を高めています。
 
 ### ここで紹介するワークシート関数
